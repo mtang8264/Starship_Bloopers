@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://cvy0t68ov0rx4"]
+
+[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Galaxy.gd" id="1_nwxpa"]
+[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Star_System.gd" id="2_1qfme"]
+[ext_resource type="Script" path="res://Scripts/Reference/Distance.gd" id="2_yp045"]
+[ext_resource type="Resource" uid="uid://xn5705emf6pj" path="res://Static_Values/Zero_Distance.tres" id="3_xso6w"]
+[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Star.gd" id="5_wrt35"]
+[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Planet.gd" id="6_xi641"]
+
+[sub_resource type="Resource" id="Resource_s8we5"]
+script = ExtResource("2_yp045")
+value = 32408.0
+unit = 7
+
+[sub_resource type="Resource" id="Resource_l07tx"]
+script = ExtResource("2_yp045")
+value = 246.0
+unit = 5
+
+[sub_resource type="Resource" id="Resource_r2ex3"]
+script = ExtResource("2_yp045")
+value = 8278.24
+unit = 7
+
+[sub_resource type="Resource" id="Resource_b8wrh"]
+script = ExtResource("2_yp045")
+value = 1.3914e+06
+unit = 1
+
+[sub_resource type="Resource" id="Resource_r41y7"]
+script = ExtResource("2_yp045")
+value = 49528.0
+unit = 1
+
+[sub_resource type="Resource" id="Resource_enbue"]
+script = ExtResource("2_yp045")
+value = 30.06
+unit = 5
+
+[node name="Scale_Test" type="Node2D"]
+
+[node name="Milky_Way" type="Node2D" parent="."]
+script = ExtResource("1_nwxpa")
+width = SubResource("Resource_s8we5")
+distance_from_parent = ExtResource("3_xso6w")
+
+[node name="Sol_System" type="Node2D" parent="Milky_Way"]
+script = ExtResource("2_1qfme")
+width = SubResource("Resource_l07tx")
+distance_from_parent = SubResource("Resource_r2ex3")
+
+[node name="Sol" type="Node2D" parent="Milky_Way/Sol_System"]
+script = ExtResource("5_wrt35")
+width = SubResource("Resource_b8wrh")
+distance_from_parent = ExtResource("3_xso6w")
+
+[node name="Mercury" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
+script = ExtResource("6_xi641")
+width = SubResource("Resource_r41y7")
+distance_from_parent = SubResource("Resource_enbue")
+
+[node name="Venus" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
+script = ExtResource("6_xi641")
+width = SubResource("Resource_r41y7")
+distance_from_parent = SubResource("Resource_enbue")
+
+[node name="Earth" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
+script = ExtResource("6_xi641")
+width = SubResource("Resource_r41y7")
+distance_from_parent = SubResource("Resource_enbue")
+
+[node name="Mars" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
+script = ExtResource("6_xi641")
+width = SubResource("Resource_r41y7")
+distance_from_parent = SubResource("Resource_enbue")
+
+[node name="Jupiter" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
+script = ExtResource("6_xi641")
+width = SubResource("Resource_r41y7")
+distance_from_parent = SubResource("Resource_enbue")
+
+[node name="Saturn" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
+script = ExtResource("6_xi641")
+width = SubResource("Resource_r41y7")
+distance_from_parent = SubResource("Resource_enbue")
+
+[node name="Uranus" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
+script = ExtResource("6_xi641")
+width = SubResource("Resource_r41y7")
+distance_from_parent = SubResource("Resource_enbue")
+
+[node name="Neptune" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
+script = ExtResource("6_xi641")
+width = SubResource("Resource_r41y7")
+distance_from_parent = SubResource("Resource_enbue")
