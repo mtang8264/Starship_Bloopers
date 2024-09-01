@@ -1,8 +1,8 @@
 class_name Distance extends Resource
 
 # The different types of measurements that can be used
-enum distance_unit {METER, KILOMETER, MEGAMETER, GIGAMETER, TERAMETER, AU, LIGHT_YEAR, PARSEC}
-const unit_multipliers = [1000, 1000, 1000, 1000, 9460.73, 63241.077088, 3.26156]
+enum distance_unit {METER, KILOMETER, MEGAMETER, GIGAMETER, AU, LIGHT_YEAR, PARSEC}
+const unit_multipliers = [1000, 1000, 1000, 149.6, 63241.1, 3.26]
 
 @export var value : float
 @export var unit : distance_unit
@@ -63,18 +63,18 @@ func convert_distance (output_unit: distance_unit, input_distance: Distance = se
 	if output_unit < distance_unit.METER:
 		push_warning("Distance.convert_distance attempted to convert to a unit smaller than meters. Returned as meters instead.")
 		return convert_distance(distance_unit.METER, input_distance)
+		
 	# Base case if the input_unit is already the output_unit
 	if input_unit == output_unit:
 		# print("input_unit is output_unit")
 		return Distance.new(input_value, input_unit)
-	# Base case if the input_unit is one bigger than the output_unit
-	if input_unit == output_unit + 1:
-		# print("output_unit is one larger than input_unit")
-		return Distance.new(input_value / unit_multipliers[output_unit], output_unit)
-	# Base case if the input_unit is one smaller than the output_unit
-	if input_unit == output_unit - 1:
-		# print("output_unit is one smaller than input_unit")
-		return Distance.new(input_value * unit_multipliers[input_unit], output_unit)
+	# Base case if we are trying to decrease unit by 1
+	if input_unit -1 == output_unit:
+		return Distance.new(input_value * unit_multipliers[output_unit], output_unit)
+	# Base case if we are trying to increase unit by 1
+	if input_unit + 1 == output_unit:
+		return Distance.new(input_value / unit_multipliers[input_unit], output_unit)
+		
 	# Recursive case if input_unit is bigger than the output_unit
 	if input_unit > output_unit + 1:
 		# print("output_unit is more than one  smaller than input_unit")
