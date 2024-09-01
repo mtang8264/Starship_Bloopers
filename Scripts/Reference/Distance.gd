@@ -13,25 +13,49 @@ func _init(_value: float =0, _unit: distance_unit =distance_unit.METER):
 	
 static func zero_distance() -> Distance:
 	return load("res://Static_Values/Zero_Distance.tres")
-	
-## Check if a distance is using a good unit for its value.
-## Returns 1 if the value is too big and the unit should be increased.
-## Returns -1 if the value is too small and the unit should be decreased.
-## Returns 0 if the value is appropriate.
-func is_ideal_scale() -> int:
-	var can_upscale = unit < distance_unit.PARSEC
-	var can_downscale = unit > distance_unit.METER
-	var downscaled = convert_distance(unit - 1)
-	if value < 1 and downscaled.value < 10000 and can_downscale:
-		return -1
-	if value > 9999 and can_upscale:
-		return 1
-	return 0
+
+static func unit_to_string(dist_unit: distance_unit) -> String:
+	match dist_unit:
+		distance_unit.METER:
+			return "Meter"
+		distance_unit.KILOMETER:
+			return "Kilometer"
+		distance_unit.MEGAMETER:
+			return "Megameter"
+		distance_unit.GIGAMETER:
+			return "Gigameter"
+		distance_unit.AU:
+			return "AU"
+		distance_unit.LIGHT_YEAR:
+			return "Light Year"
+		distance_unit.PARSEC:
+			return "Parsec"
+	return ""
+
+func test_adjacent_units():
+	# Print the current distance in the current unit
+	print("Current distance is " + str(value) + " " + unit_to_string(unit))
+	# Check if you can scale down
+	if unit <= distance_unit.METER:
+		print("Can not conver to a smaller unit.")
+	else:
+		var s = convert_distance(unit - 1)
+		print("With a smaller unit the current distance is " + str(s.value) + " " + unit_to_string(s.unit))
+	# Check if you can scale up
+	if unit >= distance_unit.PARSEC:
+		print("Can not conver to a larger unit.")
+	else:
+		var s = convert_distance(unit + 1)
+		print("With a larger unit the current distance is " + str(s.value) + " " + unit_to_string(s.unit))
+	return
 
 func convert_distance (output_unit: distance_unit, input_distance: Distance = self) -> Distance:
 	# Break up the input_distance into its parts
 	var input_unit = input_distance.unit
 	var input_value = input_distance.value
+	
+	# print("Input distance for conversion is " + str(input_value) + ", input unit is " + unit_to_string(input_unit) + ", and output unit is " + unit_to_string(output_unit) + ".")
+	
 	# Check to make sure we are not trying to push conversion beyond scale limits
 	if output_unit > distance_unit.PARSEC:
 		push_warning("Distance.convert_distance attempted to convert to a unit larger than parsecs. Returned as parsecs instead.")
