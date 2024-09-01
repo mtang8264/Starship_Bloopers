@@ -5,25 +5,19 @@ class_name Celestial_Body extends Node
 ## The distance from the center of the parent body in a given unit.
 @export var distance_from_parent: Distance
 
-func check_all_distance_scales():
-	print("Checking all distance scales of " + self.get_name())
-	check_width_scale_and_print()
-	check_distance_from_parent_scale_and_print()
+var debugging_test_all_distances = false
 
-func check_width_scale_and_print():
-	var result = width.is_ideal_scale()
-	if result >= 0.5:
-		print("Value of " + self.get_name() + "'s width is too large and unit should be increased.")
-	if result <= -0.5:
-		print("Value of " + self.get_name() + "'s width is too small and unit should be decreased.")
-	if result < 0.5 and result > -0.5:
-		print("Value of " + self.get_name() + "'s width is appropriate.")
+func test_width_unit():
+	print("Testing the width of " + self.get_name() + ".")
+	width.test_adjacent_units()
+	return
 
-func check_distance_from_parent_scale_and_print():
-	var result = distance_from_parent.is_ideal_scale()
-	if result >= 0.5:
-		print("Value of " + self.get_name() + "'s distance from parent is too large and unit should be increased.")
-	if result <= -0.5:
-		print("Value of " + self.get_name() + "'s distance from parent is too small and unit should be decreased.")
-	if result < 0.5 and result > -0.5:
-		print("Value of " + self.get_name() + "'s distance from parent is appropriate.")
+func test_distance_from_parent_unit():
+	print("Testing the distance_from_parent of " + self.get_name() + ".")
+	distance_from_parent.test_adjacent_units()
+	return
+
+func test_all_distances():
+	test_width_unit()
+	test_distance_from_parent_unit()
+	print("")

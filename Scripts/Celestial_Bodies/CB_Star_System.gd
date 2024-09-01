@@ -2,7 +2,9 @@ class_name CB_Star_System extends Celestial_Body
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	check_all_distance_scales()
+	if debugging_test_all_distances:
+		test_all_distances()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
