@@ -1,0 +1,109 @@
+{
+  "main": {
+    "id": "36ffef91d598ab0f",
+    "type": "split",
+    "children": [
+      {
+        "id": "4e037f99bda99e9e",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Ship_Classes/Terran Ladybug Class.md",
+            "mode": "source"
+          }
+        },
+        "group": "73e418999c4215f7"
+      },
+      {
+        "id": "1926c0220d48d06c",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Ship_Classes/Terran Ladybug Class.md",
+            "mode": "preview"
+          }
+        },
+        "group": "73e418999c4215f7"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8bb74bacaca1aabf",
+    "type": "split",
+    "children": [
+      {
+        "id": "1607d234553d7155",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c01af7dd1151555d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "f4b6024413dd4faa",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "205a4b4936d078bc",
+    "type": "split",
+    "children": [
+      {
+        "id": "ff319a9713be1d76",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "90640427050f5335",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Ship_Classes/Terran Ladybug Class.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "4e037f99bda99e9e",
+  "lastOpenFiles": [
+    "Ship_Classes/Terran Ladybug Class.md",
+    "02_Terran_Ship_Classes.md",
+    "01_Ship_Mechanics.md",
+    "00_Design_Document.md"
+  ]
+}
