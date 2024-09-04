@@ -3,10 +3,14 @@ class_name Star_Chart extends Node
 enum Scale {GALAXY, SYSTEM, STAR, PLANET, SATELLITE}
 var current_scale : Scale
 
+var path_label: Label
+
 @export var base_node: Celestial_Body
 @export var path_to_current_node: Array[int]
 
 func _ready():
+	path_label = find_child("path_label")
+	
 	print("Star chart, " + name + ", is ready.")
 	print("Star chart, " + name + "'s, base node is " + base_node.name + ".")
 	print("Star chart, " + name + "'s, current node is " + get_current_node().name + ".")
@@ -14,6 +18,10 @@ func _ready():
 	jump_to_path(path_to_earth)
 	print("Star chart, " + name + "'s, current node is " + get_current_node().name + ".")
 	print(get_current_path_as_names())
+	path_label.text = get_current_path_as_names()
+
+func _process(delta):
+	pass
 
 ## Returns the Celestial_Body object that is the base node of the star chart.
 func get_base_node() -> Celestial_Body:

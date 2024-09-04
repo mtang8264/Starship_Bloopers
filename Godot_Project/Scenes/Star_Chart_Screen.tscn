@@ -165,6 +165,20 @@ script = ExtResource("6_4wr3h")
 width = SubResource("Resource_d1ok7")
 distance_from_parent = SubResource("Resource_k8c3e")
 
-[node name="Star_Chart" type="Node2D" parent="." node_paths=PackedStringArray("base_node")]
+[node name="Star_Chart" type="Control" parent="." node_paths=PackedStringArray("base_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("7_xm5rc")
 base_node = NodePath("../Milky_Way")
+
+[node name="path_label" type="Label" parent="Star_Chart"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 28.0
+text = "Path"
