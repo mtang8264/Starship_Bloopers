@@ -1,5 +1,7 @@
 class_name CB_Star extends Celestial_Body
 
+const cb_type = CB_Type.STAR
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if debugging_test_all_distances:

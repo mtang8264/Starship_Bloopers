@@ -1,5 +1,7 @@
 class_name Celestial_Body extends Node
 
+enum CB_Type {GALAXY, STAR_SYSTEM, STAR, PLANET, SATELLITE}
+
 ## The width of the body in a given unit.
 @export var width: Distance
 ## The distance from the center of the parent body in a given unit.
