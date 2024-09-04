@@ -1,165 +1,170 @@
-[gd_scene load_steps=27 format=3 uid="uid://cvy0t68ov0rx4"]
+[gd_scene load_steps=28 format=3 uid="uid://cvy0t68ov0rx4"]
 
-[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Galaxy.gd" id="1_nwxpa"]
-[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Star_System.gd" id="2_1qfme"]
-[ext_resource type="Script" path="res://Scripts/Reference/Distance.gd" id="2_yp045"]
-[ext_resource type="Resource" uid="uid://xn5705emf6pj" path="res://Static_Values/Zero_Distance.tres" id="3_xso6w"]
-[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Star.gd" id="5_wrt35"]
-[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Planet.gd" id="6_xi641"]
+[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Galaxy.gd" id="1_t7m1k"]
+[ext_resource type="Script" path="res://Scripts/Reference/Distance.gd" id="2_lucc4"]
+[ext_resource type="Resource" uid="uid://xn5705emf6pj" path="res://Static_Values/Zero_Distance.tres" id="3_f18wj"]
+[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Star_System.gd" id="4_8xhpb"]
+[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Star.gd" id="5_54hk1"]
+[ext_resource type="Script" path="res://Scripts/Celestial_Bodies/CB_Planet.gd" id="6_4wr3h"]
+[ext_resource type="Script" path="res://Scripts/Star_Chart.gd" id="7_xm5rc"]
 
 [sub_resource type="Resource" id="Resource_s8we5"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 32408.0
 unit = 6
 
 [sub_resource type="Resource" id="Resource_l07tx"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 246.0
 unit = 4
 
 [sub_resource type="Resource" id="Resource_r2ex3"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 8282.21
 unit = 6
 
 [sub_resource type="Resource" id="Resource_b8wrh"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 1.391
 unit = 3
 
 [sub_resource type="Resource" id="Resource_vo82q"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 4.879
 unit = 2
 
 [sub_resource type="Resource" id="Resource_up1c2"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 58.344
 unit = 3
 
 [sub_resource type="Resource" id="Resource_t1cew"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 12.104
 unit = 2
 
 [sub_resource type="Resource" id="Resource_6sw1g"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 107.712
 unit = 3
 
 [sub_resource type="Resource" id="Resource_nojag"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 12.756
 unit = 2
 
 [sub_resource type="Resource" id="Resource_yfxng"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 1.0
 unit = 4
 
 [sub_resource type="Resource" id="Resource_t2wig"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 6.792
 unit = 2
 
 [sub_resource type="Resource" id="Resource_sgu60"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 1.52
 unit = 4
 
 [sub_resource type="Resource" id="Resource_om8ry"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 142.984
 unit = 2
 
 [sub_resource type="Resource" id="Resource_2n8n8"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 5.2
 unit = 4
 
 [sub_resource type="Resource" id="Resource_tq272"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 120.536
 unit = 2
 
 [sub_resource type="Resource" id="Resource_h30tl"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 9.54
 unit = 4
 
 [sub_resource type="Resource" id="Resource_gxww0"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 51.118
 unit = 2
 
 [sub_resource type="Resource" id="Resource_wsb0r"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 19.2
 unit = 4
 
 [sub_resource type="Resource" id="Resource_d1ok7"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 49.528
 unit = 2
 
 [sub_resource type="Resource" id="Resource_k8c3e"]
-script = ExtResource("2_yp045")
+script = ExtResource("2_lucc4")
 value = 30.06
 unit = 4
 
-[node name="Scale_Test" type="Node2D"]
+[node name="Star_Chart_Screen" type="Node2D"]
 
 [node name="Milky_Way" type="Node2D" parent="."]
-script = ExtResource("1_nwxpa")
+script = ExtResource("1_t7m1k")
 width = SubResource("Resource_s8we5")
-distance_from_parent = ExtResource("3_xso6w")
+distance_from_parent = ExtResource("3_f18wj")
 
 [node name="Sol_System" type="Node2D" parent="Milky_Way"]
-script = ExtResource("2_1qfme")
+script = ExtResource("4_8xhpb")
 width = SubResource("Resource_l07tx")
 distance_from_parent = SubResource("Resource_r2ex3")
 
 [node name="Sol" type="Node2D" parent="Milky_Way/Sol_System"]
-script = ExtResource("5_wrt35")
+script = ExtResource("5_54hk1")
 width = SubResource("Resource_b8wrh")
-distance_from_parent = ExtResource("3_xso6w")
+distance_from_parent = ExtResource("3_f18wj")
 
 [node name="Mercury" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
-script = ExtResource("6_xi641")
+script = ExtResource("6_4wr3h")
 width = SubResource("Resource_vo82q")
 distance_from_parent = SubResource("Resource_up1c2")
 
 [node name="Venus" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
-script = ExtResource("6_xi641")
+script = ExtResource("6_4wr3h")
 width = SubResource("Resource_t1cew")
 distance_from_parent = SubResource("Resource_6sw1g")
 
 [node name="Earth" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
-script = ExtResource("6_xi641")
+script = ExtResource("6_4wr3h")
 width = SubResource("Resource_nojag")
 distance_from_parent = SubResource("Resource_yfxng")
 
 [node name="Mars" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
-script = ExtResource("6_xi641")
+script = ExtResource("6_4wr3h")
 width = SubResource("Resource_t2wig")
 distance_from_parent = SubResource("Resource_sgu60")
 
 [node name="Jupiter" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
-script = ExtResource("6_xi641")
+script = ExtResource("6_4wr3h")
 width = SubResource("Resource_om8ry")
 distance_from_parent = SubResource("Resource_2n8n8")
 
 [node name="Saturn" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
-script = ExtResource("6_xi641")
+script = ExtResource("6_4wr3h")
 width = SubResource("Resource_tq272")
 distance_from_parent = SubResource("Resource_h30tl")
 
 [node name="Uranus" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
-script = ExtResource("6_xi641")
+script = ExtResource("6_4wr3h")
 width = SubResource("Resource_gxww0")
 distance_from_parent = SubResource("Resource_wsb0r")
 
 [node name="Neptune" type="Node2D" parent="Milky_Way/Sol_System/Sol"]
-script = ExtResource("6_xi641")
+script = ExtResource("6_4wr3h")
 width = SubResource("Resource_d1ok7")
 distance_from_parent = SubResource("Resource_k8c3e")
+
+[node name="Star_Chart" type="Node2D" parent="." node_paths=PackedStringArray("base_node")]
+script = ExtResource("7_xm5rc")
+base_node = NodePath("../Milky_Way")
