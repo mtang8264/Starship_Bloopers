@@ -16,7 +16,7 @@ var path_label: Label
 var path_to_current_node: Array[int]
 
 func _ready():
-	path_label = find_child("path_label")
+	path_label = find_child("Path_Label")
 	
 	print("Star chart, " + name + ", is ready.")
 	print("Star chart, " + name + "'s, base node is " + base_node.name + ".")
@@ -29,6 +29,7 @@ func _ready():
 		path_label.text = get_current_path_as_names()
 
 func _process(delta):
+	update_path_label()
 	pass
 
 ## Returns the Celestial_Body object that is the base node of the star chart.
@@ -131,3 +132,13 @@ func get_path_as_names(path: Array[int]) -> String:
 
 func get_current_path_as_names() -> String:
 	return get_path_as_names(path_to_current_node)
+	
+func update_path_label():
+	if path_label == null:
+		push_warning("Star chart, " + name + ", attempted to update its path_label but no path_label was found.")
+		return
+	var new_path = get_current_path_as_names()
+	new_path = new_path.replace("_", " ")
+	new_path = new_path.replace(">", " > ")
+	path_label.text = new_path
+	pass
