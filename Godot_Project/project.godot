@@ -11,6 +11,6 @@ config_version=5
 [application]
 
 config/name="Starship_Bloopers"
-run/main_scene="res://Scenes/star_chart_screen.tscn"
+run/main_scene="res://Scenes/star_chart_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
