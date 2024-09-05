@@ -1,6 +1,18 @@
-class_name Celestial_Body extends Node
+class_name CelestialBody extends Node
+## A parent class for all other celestial bodies.
+##
+## Contains the basic information all celestial bodies should posses. The enum
+## CBType can be used to confirm or compare what kind of celestial bodyan object
+## is. Contains the width and distance_from_parent values, and contains methods
+## to verify that they are appropriately scaled.
 
-enum CB_Type {GALAXY, STAR_SYSTEM, STAR, PLANET, SATELLITE}
+enum CBType {
+	GALAXY,
+	STAR_SYSTEM,
+	STAR,
+	PLANET,
+	SATELLITE,
+	}
 
 ## The width of the body in a given unit.
 @export var width: Distance

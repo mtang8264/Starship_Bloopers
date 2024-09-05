@@ -1,6 +1,9 @@
-class_name CB_Satellite extends Celestial_Body
+class_name CBSatellite extends CelestialBody
+## A class to define the values of a satellite.
+##
+## Extends CelestialBody.
 
-const cb_type = CB_Type.SATELLITE
+const cb_type = CBType.SATELLITE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

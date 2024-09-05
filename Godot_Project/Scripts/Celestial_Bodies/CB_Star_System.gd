@@ -1,6 +1,9 @@
-class_name CB_Star_System extends Celestial_Body
+class_name CBStarSystem extends CelestialBody
+## A class to define the values of a star system.
+##
+## Extends CelestialBody.
 
-const cb_type = CB_Type.STAR_SYSTEM
+const cb_type = CBType.STAR_SYSTEM
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

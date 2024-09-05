@@ -1,12 +1,19 @@
-class_name Star_Chart extends Node
+class_name StarChart extends Node
+## A class that controls a star chart screen.
 
-enum Scale {GALAXY, SYSTEM, STAR, PLANET, SATELLITE}
+enum Scale {
+	GALAXY,
+	SYSTEM,
+	STAR,
+	PLANET,
+	SATELLITE}
 var current_scale : Scale
 
 var path_label: Label
 
-@export var base_node: Celestial_Body
-@export var path_to_current_node: Array[int]
+## The node that is the highest element in the star chart.
+@export var base_node: CelestialBody
+var path_to_current_node: Array[int]
 
 func _ready():
 	path_label = find_child("path_label")
@@ -18,17 +25,18 @@ func _ready():
 	jump_to_path(path_to_earth)
 	print("Star chart, " + name + "'s, current node is " + get_current_node().name + ".")
 	print(get_current_path_as_names())
-	path_label.text = get_current_path_as_names()
+	if path_label != null:
+		path_label.text = get_current_path_as_names()
 
 func _process(delta):
 	pass
 
 ## Returns the Celestial_Body object that is the base node of the star chart.
-func get_base_node() -> Celestial_Body:
+func get_base_node() -> CelestialBody:
 	return base_node
 
 ## Returns the Celestial_Body object that is the current node of the star chart.
-func get_current_node() -> Celestial_Body:
+func get_current_node() -> CelestialBody:
 	var pointer = base_node
 	for n in range(path_to_current_node.size()):
 		pointer = pointer.get_child(path_to_current_node[n])
@@ -84,7 +92,7 @@ func zoom_out():
 	print("The star chart, " + name + ", has been zoomed out to " + get_current_node().name + ".")
 
 ## Returns the Celestial_Body object of a node given a specific path.
-func get_node_at_path(path: Array[int]) -> Celestial_Body:
+func get_node_at_path(path: Array[int]) -> CelestialBody:
 	var pointer = base_node
 	for n in range(path.size()):
 		# Check to make sure an appropriate child exists.

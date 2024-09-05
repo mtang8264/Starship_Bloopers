@@ -1,6 +1,9 @@
-class_name CB_Planet extends Celestial_Body
+class_name CBPlanet extends CelestialBody
+## A class to define the values of a planet.
+##
+## Extends CelestialBody.
 
-const cb_type = CB_Type.PLANET
+const cb_type = CBType.PLANET
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
