@@ -1,4 +1,4 @@
-class_name CBStar extends CelestialBody
+class_name CBStar_DEP extends CelestialBody_DEP
 ## A class to define the values of a star.
 ##
 ## Extends CelestialBody.

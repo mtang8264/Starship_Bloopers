@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CBPlanet" load_steps=5 format=3 uid="uid://c732dgqrfq1tu"]
+
+[ext_resource type="Resource" uid="uid://bpgjfu2b6jyov" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Saturn/distance_saturn_distance_from_parent.tres" id="1_efhol"]
+[ext_resource type="Script" path="res://Scripts/Resources/celestial_body.gd" id="1_sed44"]
+[ext_resource type="Script" path="res://Scripts/Resources/cb_planet.gd" id="2_mbjwk"]
+[ext_resource type="Resource" uid="uid://bp0ucbe87q77r" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Saturn/distance_saturn_width.tres" id="4_1gwji"]
+
+[resource]
+resource_name = "saturn"
+script = ExtResource("2_mbjwk")
+width = ExtResource("4_1gwji")
+distance_from_parent = ExtResource("1_efhol")
+orbiting_bodies = Array[ExtResource("1_sed44")]([])

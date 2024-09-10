@@ -12,50 +12,100 @@ var current_scale : Scale
 var path_label: Label
 
 ## The node that is the highest element in the star chart.
-@export var base_node: CelestialBody
-var path_to_current_node: Array[int]
+@export var origin_body: CelestialBody
+var path_to_current_body: Array[int]
 
 func _ready():
 	path_label = find_child("Path_Label")
-	
 	print("Star chart, " + name + ", is ready.")
-	print("Star chart, " + name + "'s, base node is " + base_node.name + ".")
-	print("Star chart, " + name + "'s, current node is " + get_current_node().name + ".")
-	var path_to_earth = get_path_to_node_by_name("Earth")
+	print("Star chart, " + name + "'s, base node is " + origin_body.get_name() + ".")
+	print(origin_body.find_child("earth").resource_path)
+	var path_to_earth = get_path_to_body_by_name("earth")
+	print(path_to_earth)
 	jump_to_path(path_to_earth)
-	print("Star chart, " + name + "'s, current node is " + get_current_node().name + ".")
-	print(get_current_path_as_names())
-	if path_label != null:
-		path_label.text = get_current_path_as_names()
 
 func _process(delta):
 	update_path_label()
-	pass
 
 ## Returns the Celestial_Body object that is the base node of the star chart.
-func get_base_node() -> CelestialBody:
-	return base_node
+func get_origin_body() -> CelestialBody:
+	return origin_body
 
 ## Returns the Celestial_Body object that is the current node of the star chart.
-func get_current_node() -> CelestialBody:
-	var pointer = base_node
-	for n in range(path_to_current_node.size()):
-		pointer = pointer.get_child(path_to_current_node[n])
+func get_current_body() -> CelestialBody:
+	var pointer = origin_body
+	for n in range(path_to_current_body.size()):
+		pointer = pointer.orbiting_bodies[path_to_current_body[n]]
 	return pointer
 
+## Zooms the star chart in to a node that is the 'index' child of the current pointer.
+func zoom_in(index: int):
+	var current_body = get_current_body()
+	if current_body.orbiting_bodies.size() > index:
+		path_to_current_body.append(index)
+
+## Zooms the star chart in to a node that is a child of the current node named name_of_child.
+func zoom_in_to_name(name_of_child: String):
+	var current_body = get_current_body()
+	for n in range(current_body.orbiting_bodies.size()):
+		if current_body.orbiting_bodies[n].resource_name == name_of_child:
+			path_to_current_body.append(n)
+
+## Zooms the star chart out one node.
+func zoom_out():
+	if path_to_current_body.size() > 0:
+		path_to_current_body.pop_back()
+
+## Returns the Celestial_Body object of a node given a specific path.
+func get_node_at_path(path: Array[int]) -> CelestialBody:
+	var pointer = origin_body
+	for n in range(path.size()):
+		if pointer.orbiting_bodies.size() <= path[n]:
+			return null
+		pointer = pointer.orbiting_bodies[path[n]]
+	return pointer
+
+## Checks if the given path returns a valid node.
+func is_valid_path(path: Array[int]) -> bool:
+	var pointer = origin_body
+	for n in range(path.size()):
+		if pointer.orbiting_bodies.size() <= path[n]:
+			return false
+		pointer = pointer.orbiting_bodies[path[n]]
+	return true
+
+## Attemps to overwrite the current path with a given one.
+func jump_to_path(path: Array[int]):
+	if is_valid_path(path):
+		path_to_current_body = path
+		return
+	push_warning("Attempted to overwrite the path of star chart " + name + ". Path was not a valid path.")
+
+func get_path_as_names(path: Array[int]) -> String:
+	if is_valid_path(path) == false:
+		push_warning("Attempt to run get_path_as_names from " + name + "was not a valid path.")
+		return ""
+	var pointer = origin_body
+	var p_string = pointer.resource_name
+	for n in range(path.size()):
+		pointer = pointer.orbiting_bodies[path[n]]
+		p_string = p_string + ">" + pointer.get_name()
+	return p_string
+
+func get_current_path_as_names() -> String:
+	return get_path_as_names(path_to_current_body)
+
 ## Returns an Array[int] that is the path to a node given the star chart's base node.
-func get_path_to_node_by_name(name_of_node: String) -> Array[int]:
-	# Assign a pointer to the target node
-	var pointer = base_node.find_child(name_of_node)
-	# Check if the pointer is actually assigned
+func get_path_to_body_by_name(name_of_body: String) -> Array[int]:
+	var pointer = origin_body.find_child(name_of_body)
 	if pointer == null:
-		push_warning("Star chart," + name + ", could not find a node with the name " + name_of_node + ".")
+		push_warning("Star chart, " + name + ", could not find a path to the child " + name_of_body + ".")
 		return Array()
-	var path = Array([], TYPE_INT, "", null)
-	var loop_counter = 0;
-	while pointer != base_node:
+	var path = Array([],TYPE_INT, "", null)
+	var loop_counter = 0
+	while pointer != origin_body:
 		if loop_counter > 50:
-			push_warning("Star chart," + name + ", could not find a path to node with the name " + name_of_node + " within 50 loops.")
+			push_warning("Couldn't find a path to " + name_of_body + " within 50 loops.")
 			return Array()
 		var ind = Array([pointer.get_index()], TYPE_INT, "", null)
 		ind.append_array(path)
@@ -63,82 +113,6 @@ func get_path_to_node_by_name(name_of_node: String) -> Array[int]:
 		pointer = pointer.get_parent()
 		loop_counter = loop_counter + 1
 	return path
-
-## Zooms the star chart in to a node that is the 'index' child of the current pointer.
-func zoom_in(index: int):
-	var pointer = get_current_node()
-	# Check to make sure the node has the appropriate number of children
-	if pointer.get_child_count() <= index:
-		push_warning("Can not zoom star chart, " + name + ", into index " + str(index) + " because current node, " + pointer.name + " only has " + str(pointer.get_child_count()) + " children.")
-		print("The star chart, " + name + ", has failed to zoom in during zoom_in(" + str(index) + "). View warning for more information.")
-		return
-	# Append the new index to the path array
-	path_to_current_node.append(index)
-	print("The star chart, " + name + ", has been zoomed in to " + get_current_node().name + ".")
-
-## Zooms the star chart in to a node that is a child of the current node named name_of_child.
-func zoom_in_to_name(name_of_child: String):
-	var pointer = get_current_node().find_child(name_of_child)
-	# Check if there was no child found
-	if pointer == null:
-		push_warning("Can not zoom star chart, " + name + ", into child, " + name_of_child + ", because the current node, " + get_current_node().name + ", does not have a child of that name.")
-		print("The star chart, " + name + ", has failed to zoom in during zoom_in_to_name(" + name_of_child + "). View warning for more information.")
-		return
-	zoom_in(pointer.get_index())
-	pass
-
-## Zooms the star chart out one node.
-func zoom_out():
-	path_to_current_node.pop_back()
-	print("The star chart, " + name + ", has been zoomed out to " + get_current_node().name + ".")
-
-## Returns the Celestial_Body object of a node given a specific path.
-func get_node_at_path(path: Array[int]) -> CelestialBody:
-	var pointer = base_node
-	for n in range(path.size()):
-		# Check to make sure an appropriate child exists.
-		if pointer.get_child_count() <= path[n]:
-			push_warning("Warning on call of get_node_at_path. Path index " + str(n) + " is out of bounds for given node, " + pointer.name + ".")
-			return
-		pointer = pointer.get_child(path[n])
-	return pointer
-
-## Checks if the given path returns a valid node.
-func is_valid_path(path: Array[int]) -> bool:
-	var pointer = get_node_at_path(path)
-	return pointer != null
-
-## Attemps to overwrite the current path with a given one.
-func jump_to_path(path: Array[int]):
-	# Find the given node being jumped to
-	var pointer = get_node_at_path(path)
-	# Check if node is valid
-	if pointer == null:
-		push_warning("Warning on call of jump_to_path. Given path did not return a valid node.")
-		return
-	path_to_current_node = path.duplicate()
-	pass
-
-func get_path_as_names(path: Array[int]) -> String:
-	var s = ""
-	if !is_valid_path(path):
-		return s
-	var pointer = base_node
-	s = pointer.name
-	for n in range(path.size()):
-		pointer = pointer.get_child(path[n])
-		s = s + ">" + pointer.name
-	return s
-
-func get_current_path_as_names() -> String:
-	return get_path_as_names(path_to_current_node)
 	
 func update_path_label():
-	if path_label == null:
-		push_warning("Star chart, " + name + ", attempted to update its path_label but no path_label was found.")
-		return
-	var new_path = get_current_path_as_names()
-	new_path = new_path.replace("_", " ")
-	new_path = new_path.replace(">", " > ")
-	path_label.text = new_path
-	pass
+	path_label.text = get_current_path_as_names()

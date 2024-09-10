@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CBStarSystem" load_steps=6 format=3 uid="uid://470jdshrhael"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/celestial_body.gd" id="1_24765"]
+[ext_resource type="Resource" uid="uid://n8ymfsynjlpp" path="res://Celestial_Bodies/Milky_Way/Sol_System/distance_sol_system_distance_from_parent.tres" id="1_rq8p7"]
+[ext_resource type="Script" path="res://Scripts/Resources/cb_star_system.gd" id="2_dqx1e"]
+[ext_resource type="Resource" uid="uid://hmtl33e8yigb" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/sol.tres" id="3_2yhug"]
+[ext_resource type="Resource" uid="uid://c8yfs8pte67hp" path="res://Celestial_Bodies/Milky_Way/Sol_System/distance_sol_system_width.tres" id="5_ahp30"]
+
+[resource]
+resource_name = "sol_system"
+script = ExtResource("2_dqx1e")
+width = ExtResource("5_ahp30")
+distance_from_parent = ExtResource("1_rq8p7")
+orbiting_bodies = Array[ExtResource("1_24765")]([ExtResource("3_2yhug")])

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CBPlanet" load_steps=5 format=3 uid="uid://bbbu1nrmuniyt"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/celestial_body.gd" id="1_qqtml"]
+[ext_resource type="Resource" uid="uid://cd3162c2qt0im" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Neptune/distance_neptune_distance_from_parent.tres" id="1_yjbo6"]
+[ext_resource type="Script" path="res://Scripts/Resources/cb_planet.gd" id="2_thdh5"]
+[ext_resource type="Resource" uid="uid://dkq8bhhr5skud" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Neptune/distance_neptune_width.tres" id="4_lerhx"]
+
+[resource]
+resource_name = "neptune"
+script = ExtResource("2_thdh5")
+width = ExtResource("4_lerhx")
+distance_from_parent = ExtResource("1_yjbo6")
+orbiting_bodies = Array[ExtResource("1_qqtml")]([])

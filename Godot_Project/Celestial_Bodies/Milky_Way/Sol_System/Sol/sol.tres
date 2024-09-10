@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CBStar" load_steps=13 format=3 uid="uid://hmtl33e8yigb"]
+
+[ext_resource type="Resource" uid="uid://xn5705emf6pj" path="res://Static_Values/Zero_Distance.tres" id="1_qwmt5"]
+[ext_resource type="Script" path="res://Scripts/Resources/celestial_body.gd" id="1_yo2rw"]
+[ext_resource type="Script" path="res://Scripts/Resources/cb_star.gd" id="2_dj6mf"]
+[ext_resource type="Resource" uid="uid://wbr24jcyjytm" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Mercury/mercury.tres" id="3_o1thp"]
+[ext_resource type="Resource" uid="uid://wp1eel5akpxy" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/distance_sol_width.tres" id="4_7qfio"]
+[ext_resource type="Resource" uid="uid://d3agrqdykro6q" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Venus/venus.tres" id="4_vn6u7"]
+[ext_resource type="Resource" uid="uid://duep17ktbmhhs" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Earth/earth.tres" id="5_oghxp"]
+[ext_resource type="Resource" uid="uid://by1ectfe1c8d2" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Mars/mars.tres" id="6_txvyy"]
+[ext_resource type="Resource" uid="uid://cydn10s4te11l" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Jupiter/jupiter.tres" id="7_hdm2y"]
+[ext_resource type="Resource" uid="uid://c732dgqrfq1tu" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Saturn/saturn.tres" id="8_jfyhq"]
+[ext_resource type="Resource" uid="uid://dnwnbpfmtrbac" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Uranus/uranus.tres" id="9_h3gnk"]
+[ext_resource type="Resource" uid="uid://bbbu1nrmuniyt" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Neptune/neptune.tres" id="10_g3qtb"]
+
+[resource]
+resource_name = "sol"
+script = ExtResource("2_dj6mf")
+width = ExtResource("4_7qfio")
+distance_from_parent = ExtResource("1_qwmt5")
+orbiting_bodies = Array[ExtResource("1_yo2rw")]([ExtResource("3_o1thp"), ExtResource("4_vn6u7"), ExtResource("5_oghxp"), ExtResource("6_txvyy"), ExtResource("7_hdm2y"), ExtResource("8_jfyhq"), ExtResource("9_h3gnk"), ExtResource("10_g3qtb")])

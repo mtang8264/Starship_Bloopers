@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Distance" load_steps=2 format=3 uid="uid://cd3162c2qt0im"]
+
+[ext_resource type="Script" path="res://Scripts/Reference/distance.gd" id="1_k8g3r"]
+
+[resource]
+script = ExtResource("1_k8g3r")
+value = 30.06
+unit = 4
