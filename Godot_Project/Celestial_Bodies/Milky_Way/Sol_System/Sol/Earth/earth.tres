@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CBPlanet" load_steps=5 format=3 uid="uid://duep17ktbmhhs"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/celestial_body.gd" id="1_7glct"]
+[ext_resource type="Resource" uid="uid://lc032lplfkp4" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Earth/distance_earth_distance_from_parent.tres" id="1_y3het"]
+[ext_resource type="Script" path="res://Scripts/Resources/cb_planet.gd" id="2_fm1nb"]
+[ext_resource type="Resource" uid="uid://cgrxrq3a2gelc" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Earth/distance_earth_width.tres" id="4_d2pmd"]
+
+[resource]
+resource_name = "earth"
+script = ExtResource("2_fm1nb")
+width = ExtResource("4_d2pmd")
+distance_from_parent = ExtResource("1_y3het")
+orbiting_bodies = Array[ExtResource("1_7glct")]([])

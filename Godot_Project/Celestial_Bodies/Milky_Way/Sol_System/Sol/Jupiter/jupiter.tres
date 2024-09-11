@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CBPlanet" load_steps=5 format=3 uid="uid://cydn10s4te11l"]
+
+[ext_resource type="Resource" uid="uid://b6m06wynmr0me" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Jupiter/distance_jupiter_distance_from_parent.tres" id="1_ew3gl"]
+[ext_resource type="Script" path="res://Scripts/Resources/celestial_body.gd" id="1_vre4b"]
+[ext_resource type="Script" path="res://Scripts/Resources/cb_planet.gd" id="2_d2pbe"]
+[ext_resource type="Resource" uid="uid://dmijiicwo1146" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Jupiter/distance_jupiter_width.tres" id="4_24nft"]
+
+[resource]
+resource_name = "jupiter"
+script = ExtResource("2_d2pbe")
+width = ExtResource("4_24nft")
+distance_from_parent = ExtResource("1_ew3gl")
+orbiting_bodies = Array[ExtResource("1_vre4b")]([])

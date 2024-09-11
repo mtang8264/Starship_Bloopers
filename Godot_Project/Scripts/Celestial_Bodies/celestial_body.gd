@@ -1,4 +1,4 @@
-class_name CelestialBody extends Node
+class_name CelestialBody_DEP extends Node
 ## A parent class for all other celestial bodies.
 ##
 ## Contains the basic information all celestial bodies should posses. The enum

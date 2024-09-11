@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CBPlanet" load_steps=5 format=3 uid="uid://dnwnbpfmtrbac"]
+
+[ext_resource type="Resource" uid="uid://baknx6oaqmcuo" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Uranus/distance_uranus_distance_from_parent.tres" id="1_7cypr"]
+[ext_resource type="Script" path="res://Scripts/Resources/celestial_body.gd" id="1_vd2i3"]
+[ext_resource type="Script" path="res://Scripts/Resources/cb_planet.gd" id="2_dr353"]
+[ext_resource type="Resource" uid="uid://bn8upehdyq6x0" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Uranus/distance_uranus_width.tres" id="4_xmvx3"]
+
+[resource]
+resource_name = "uranus"
+script = ExtResource("2_dr353")
+width = ExtResource("4_xmvx3")
+distance_from_parent = ExtResource("1_7cypr")
+orbiting_bodies = Array[ExtResource("1_vd2i3")]([])

@@ -1,4 +1,4 @@
-class_name CBPlanet extends CelestialBody
+class_name CBPlanet_DEP extends CelestialBody_DEP
 ## A class to define the values of a planet.
 ##
 ## Extends CelestialBody.

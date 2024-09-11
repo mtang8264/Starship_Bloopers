@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CBPlanet" load_steps=5 format=3 uid="uid://d3agrqdykro6q"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/celestial_body.gd" id="1_e56ng"]
+[ext_resource type="Resource" uid="uid://cwpj6hixvcocv" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Venus/distance_venus_distance_from_parent.tres" id="1_tc0i5"]
+[ext_resource type="Script" path="res://Scripts/Resources/cb_planet.gd" id="2_3lvny"]
+[ext_resource type="Resource" uid="uid://c608atvhcxf8o" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Venus/distance_venus_width.tres" id="4_ektvn"]
+
+[resource]
+resource_name = "venus"
+script = ExtResource("2_3lvny")
+width = ExtResource("4_ektvn")
+distance_from_parent = ExtResource("1_tc0i5")
+orbiting_bodies = Array[ExtResource("1_e56ng")]([])
