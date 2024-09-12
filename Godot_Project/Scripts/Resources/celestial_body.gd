@@ -12,6 +12,11 @@ enum CBType {
 @export var distance_from_parent: Distance
 @export var orbiting_bodies: Array[CelestialBody]
 
+@export_group("Star Chart Properties")
+## The default color used to represent a celestial body when displayed on a star
+## chart.
+@export var star_chart_display_color: Color =Color.WHITE
+
 func find_child(name_of_child: String) -> CelestialBody:
 	for n in range(orbiting_bodies.size()):
 		if orbiting_bodies[n].resource_name == name_of_child:
