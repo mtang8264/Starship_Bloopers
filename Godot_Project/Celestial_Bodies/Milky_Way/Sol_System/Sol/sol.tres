@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CBStar" load_steps=13 format=3 uid="uid://hmtl33e8yigb"]
 
-[ext_resource type="Resource" uid="uid://xn5705emf6pj" path="res://Static_Values/Zero_Distance.tres" id="1_qwmt5"]
+[ext_resource type="Resource" uid="uid://xn5705emf6pj" path="res://Static_Values/zero_distance.tres" id="1_qwmt5"]
 [ext_resource type="Script" path="res://Scripts/Resources/celestial_body.gd" id="1_yo2rw"]
 [ext_resource type="Script" path="res://Scripts/Resources/cb_star.gd" id="2_dj6mf"]
 [ext_resource type="Resource" uid="uid://wbr24jcyjytm" path="res://Celestial_Bodies/Milky_Way/Sol_System/Sol/Mercury/mercury.tres" id="3_o1thp"]
@@ -19,3 +19,4 @@ script = ExtResource("2_dj6mf")
 width = ExtResource("4_7qfio")
 distance_from_parent = ExtResource("1_qwmt5")
 orbiting_bodies = Array[ExtResource("1_yo2rw")]([ExtResource("3_o1thp"), ExtResource("4_vn6u7"), ExtResource("5_oghxp"), ExtResource("6_txvyy"), ExtResource("7_hdm2y"), ExtResource("8_jfyhq"), ExtResource("9_h3gnk"), ExtResource("10_g3qtb")])
+star_chart_display_color = Color(0.92549, 0.384314, 0.0666667, 1)

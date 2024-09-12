@@ -16,6 +16,7 @@ enum CBType {
 ## The default color used to represent a celestial body when displayed on a star
 ## chart.
 @export var star_chart_display_color: Color =Color.WHITE
+# I use this website for the color of the Sol system planets: https://astronomy.stackexchange.com/questions/14032/color-of-planets
 
 func find_child(name_of_child: String) -> CelestialBody:
 	for n in range(orbiting_bodies.size()):

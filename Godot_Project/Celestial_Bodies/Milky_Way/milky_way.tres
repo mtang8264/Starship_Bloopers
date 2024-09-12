@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CBGalaxy" load_steps=6 format=3 uid="uid://b6bf1cp2x5gym"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/celestial_body.gd" id="1_jsydo"]
-[ext_resource type="Resource" uid="uid://xn5705emf6pj" path="res://Static_Values/Zero_Distance.tres" id="1_ur0jf"]
+[ext_resource type="Resource" uid="uid://xn5705emf6pj" path="res://Static_Values/zero_distance.tres" id="1_ur0jf"]
 [ext_resource type="Script" path="res://Scripts/Resources/cb_galaxy.gd" id="2_1ji1k"]
 [ext_resource type="Resource" uid="uid://470jdshrhael" path="res://Celestial_Bodies/Milky_Way/Sol_System/sol_system.tres" id="3_w2v04"]
 [ext_resource type="Resource" uid="uid://buuuwrj0futku" path="res://Celestial_Bodies/Milky_Way/distance_milky_way_width.tres" id="4_jrjed"]
@@ -12,3 +12,4 @@ script = ExtResource("2_1ji1k")
 width = ExtResource("4_jrjed")
 distance_from_parent = ExtResource("1_ur0jf")
 orbiting_bodies = Array[ExtResource("1_jsydo")]([ExtResource("3_w2v04")])
+star_chart_display_color = Color(1, 1, 1, 1)
