@@ -9,20 +9,24 @@ enum Scale {
 	SATELLITE}
 var current_scale : Scale
 
-var path_label: Label
+var path_labels: Array[Node]
 
 ## The node that is the highest element in the star chart.
 @export var origin_body: CelestialBody
 var path_to_current_body: Array[int]
 
+@export_group("Testing Properties")
+@export var beginning_body: String
+
 func _ready():
-	path_label = find_child("Path_Label")
+	path_labels = find_children("Path_Label_?")
+	
+	zoom_in_to_name(beginning_body)
 	print("Star chart, " + name + ", is ready.")
 	print("Star chart, " + name + "'s, base node is " + origin_body.get_name() + ".")
-	print(origin_body.find_child("earth").resource_path)
-	var path_to_earth = get_path_to_body_by_name("earth")
-	print(path_to_earth)
-	jump_to_path(path_to_earth)
+	print("Star chart, " + name + "'s, current path is " + str(path_to_current_body) + ".")
+	print("Star chart, " + name + "'s, current body is " + get_current_body().get_name() + ".")
+	print(get_current_path_as_array())
 
 func _process(delta):
 	update_path_label()
@@ -91,9 +95,23 @@ func get_path_as_names(path: Array[int]) -> String:
 		pointer = pointer.orbiting_bodies[path[n]]
 		p_string = p_string + ">" + pointer.get_name()
 	return p_string
+	
+func get_path_as_array(path: Array[int]) -> Array[String]:
+	var a = Array([], TYPE_STRING, "", null)
+	if is_valid_path(path) == false:
+		return a
+	var pointer = origin_body
+	a.append(pointer.get_name())
+	for n in range(path.size()):
+		pointer = pointer.orbiting_bodies[path[n]]
+		a.append(pointer.get_name())
+	return a
 
 func get_current_path_as_names() -> String:
 	return get_path_as_names(path_to_current_body)
+
+func get_current_path_as_array() -> Array[String]:
+	return get_path_as_array(path_to_current_body)
 
 ## Returns an Array[int] that is the path to a node given the star chart's base node.
 func get_path_to_body_by_name(name_of_body: String) -> Array[int]:
@@ -115,4 +133,12 @@ func get_path_to_body_by_name(name_of_body: String) -> Array[int]:
 	return path
 	
 func update_path_label():
-	path_label.text = get_current_path_as_names()
+	var p = get_current_path_as_array()
+	for n in range(path_labels.size()):
+		if n < p.size():
+			if n == 0:
+				path_labels[n].text = p[n]
+			else:
+				path_labels[n].text = "> " + p[n]
+		else:
+			path_labels[n].text = ""

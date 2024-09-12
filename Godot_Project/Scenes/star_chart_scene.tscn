@@ -8,8 +8,40 @@
 [node name="Star_Chart" type="Node" parent="."]
 script = ExtResource("7_5oeew")
 origin_body = ExtResource("2_lii7s")
+beginning_body = "sol_system"
 
-[node name="Path_Label" type="Label" parent="Star_Chart"]
-offset_right = 118.0
-offset_bottom = 23.0
-text = "Star Chart Path"
+[node name="Path_Box" type="HBoxContainer" parent="Star_Chart"]
+offset_right = 1000.0
+offset_bottom = 40.0
+
+[node name="Path_Label_0" type="Label" parent="Star_Chart/Path_Box"]
+layout_mode = 2
+text = "Label 0"
+
+[node name="Path_Label_1" type="Label" parent="Star_Chart/Path_Box"]
+layout_mode = 2
+text = "> Label 1"
+
+[node name="Path_Label_2" type="Label" parent="Star_Chart/Path_Box"]
+layout_mode = 2
+text = "> Label 2"
+
+[node name="Path_Label_3" type="Label" parent="Star_Chart/Path_Box"]
+layout_mode = 2
+text = "> Label 3"
+
+[node name="Path_Label_4" type="Label" parent="Star_Chart/Path_Box"]
+layout_mode = 2
+text = "> Label 4"
+
+[node name="Path_Label_5" type="Label" parent="Star_Chart/Path_Box"]
+layout_mode = 2
+text = "> Label 5"
+
+[node name="Path_Label_6" type="Label" parent="Star_Chart/Path_Box"]
+layout_mode = 2
+text = "> Label 6"
+
+[node name="Path_Label_7" type="Label" parent="Star_Chart/Path_Box"]
+layout_mode = 2
+text = "> Label 7"
